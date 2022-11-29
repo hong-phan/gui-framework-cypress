@@ -18,5 +18,8 @@
   "homepage": "https://github.com/hong-phan/gui-framework-cypress#readme",
   "devDependencies": {
     "cypress": "^10.7.0"
+  },
+  "dependencies": {
+    "chai": "^4.3.7"
   }
 }
