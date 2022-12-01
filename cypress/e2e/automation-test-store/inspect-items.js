@@ -5,12 +5,14 @@ describe('Inspect Automation Test Store items using chain of command', () => {
         cy.get('.prdocutname[title="Skinsheen Bronzer Stick"]').click();
     });
 
-    it('Click on the first item text', () => {
+    it.only('Click on the first item text', () => {
         cy.visit("https://automationteststore.com/");
-        cy.get('.prdocutname').contains('Skinsheen Bronzer Stick').click();
+        cy.get('.prdocutname').contains('Skinsheen Bronzer Stick').click().then(function(itemHeaderText){
+            console.log("Select the following item: " + itemHeaderText.text());
+        })
     });
     
-    it.only('Click on the first item using idex', () => {
+    it('Click on the first item using idex', () => {
         cy.visit("https://automationteststore.com/");
         cy.get('.fixed_wrapper').find('.prdocutname').eq(0).click();
     });
