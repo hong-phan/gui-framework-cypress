@@ -9,10 +9,26 @@ describe('Alias and invoke', () => {
         cy.get('@productThumbnail').should('include', 'Seaweed Conditioner');
     });
 
-    it.only('Validate product thumbnail', () => {
+    it('Validate product thumbnail', () => {
         cy.visit("https://automationteststore.com/");
         cy.get('.thumbnail').as('productThumbnail');
         cy.get('@productThumbnail').should('have.length', 16);
         cy.get('@productThumbnail').find('.productcart').invoke('attr', 'title').should('include', 'Add to Cart');
+    });
+
+    it.only('Calculate total of normal and sale products ', () => {
+        cy.visit("https://automationteststore.com/");
+        cy.get('.thumbnail').as('productThumbnail');
+        // cy.get('@productThumbnail').find('.oneprice').each(($el, index, $list) => {
+        //     cy.log($el.text());
+        // });
+        cy.get('.thumbnail').find('.oneprice').invoke('text').as('itemPrice');
+        cy.get('@itemPrice').then($linkText => {
+            var itemPrice = $linkText.split('$');
+            var i;
+            for(i = 0; i < itemPrice.length; i++){
+                cy.log(itemPrice[i])
+            }
+        })
     });
 });
