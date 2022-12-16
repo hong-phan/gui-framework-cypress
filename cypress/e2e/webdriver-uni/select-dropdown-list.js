@@ -10,7 +10,6 @@ describe('Interact with dropdown lists via webdriveruni', () => {
 
         cy.get('#dropdowm-menu-2').select('maven').should('have.value','maven');
         cy.get('#dropdowm-menu-2').select('junit').contains('JUnit');
-ß
     });
     
 });
